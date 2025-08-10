@@ -79,7 +79,7 @@ ul li {
     list-style: none;
     font-size: 17px;
     padding: 12px 8px 12px 50px;
-    -webkit-user-select: none; /* Safari */
+    -webkit-user-select: none;
     user-select: none;
     cursor: pointer;
     position: relative;
@@ -87,32 +87,39 @@ ul li {
     transition: background 0.2s ease, color 0.2s ease;
 }
 
-ul li:hover {
-    background: #f4f6f8;
-}
-
 ul li::before {
     content: '';
     position: absolute;
-    height: 22px;
-    width: 22px;
+    height: 20px;
+    width: 20px;
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
-    background-image: url('./images/unchecked.png');
-    background-size: cover;
-    background-position: center;
+    border: 2px solid #bbb; /* outline for unchecked */
+    background-color: white;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-ul li.checked {
-    color: #999;
-    text-decoration: line-through;
-}
-
+/* Checked state */
 ul li.checked::before {
-    background-image: url('./images/checked.png');
-    transform: scale(1.1);
+    background-color: #de1e78; /* fill color when checked */
+    border-color: #de1e78;
+}
+
+/* Add a tick using CSS */
+ul li.checked::after {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 50%;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: translateY(-50%) rotate(45deg);
+    transition: all 0.2s ease;
 }
 
 ul li span {
